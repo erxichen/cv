@@ -1,0 +1,89 @@
+\documentclass[11pt,letterpaper]{moderncv}
+
+% fix Font Awesome font loading problem
+\usepackage{fontawesome}
+\newfontfamily\FA{FontAwesome}
+\usepackage{fontspec}
+%% Chinese;
+\usepackage[
+    CheckSingle,
+    CheckFullRight,
+]{xeCJK}
+\setCJKmainfont[Path = {fonts/}, BoldFont = {msyh.ttc}]{simfang.ttf}
+\punctstyle{quanjiao}
+\usepackage{zhnumber}
+
+%% switch between english and chinese
+%% ------------------------------
+\newif\ifeng
+\engtrue  % comment to switch to chinese
+\newcommand*\bilingual[2]{\ifeng#1\else#2\fi}
+
+\usepackage{multicol}
+\usepackage[inline]{enumitem}
+\usepackage{datetime}
+\usepackage{siunitx}
+\usepackage{relsize}
+\usepackage{glossaries}
+\usepackage{ulem}
+\input{src/glossaries.tex}
+
+\newlength\textcolumnwidth
+\AtBeginDocument{\setlength\textcolumnwidth{\textwidth-\hintscolumnwidth}}
+
+%% NOTE you can play with the layout/style of the doc here if you want!
+\input{src/theme.tex}
+
+%% symbols
+%% ------------------------------
+%% C++
+\def\Cpp{\mbox{C\texttt{++}}}
+\def\Csharp{\mbox{C\texttt{\#}}}
+\def\sklearn{scikit-learn}
+\def\Sklearn{Scikit-learn}
+\DeclareTextFontCommand\textcode{\ttfamily\upshape}
+
+%% commands
+%% --------------------------------------------------
+
+\def\cvproj#1#2#3{\cvitemwithcomment{#1}{[#2]}{\raggedright\upshape{}#3}}
+\def\link#1{\par{\textbf{\faLink~\httplink{#1}}}}
+\newcommand*{\entryshortmonth}[2]{\bilingual{\shortmonthname[#2]~#1}
+                                            {#1/#2}}
+\newcommand*\propername[1]{\textit{#1}}
+\newcommand*{\suggestRemove}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand*{\suggestAdd}[1]{\textcolor{blue}{#1}}
+\newcommand*{\suggestSub}[2]{\suggestRemove{#1}\suggestAdd{#2}}
+\newcommand*{\missing}{\textcolor{red}{MISSING}}
+
+%% set up personal information
+%% --------------------------------------------------
+
+%% NOTE edit this for your personal info
+\input{src/personal-info.tex}
+
+%% document
+%% ============================================================================
+\begin{document}
+\makecvtitle
+\vspace{\titleskip}
+
+\input{src/objectives.tex}
+
+%% NOTE if your school sounds impressive or your GPA is super high
+%% you may put this before `exp' (under `objectives')
+\input{src/education.tex}
+
+%% NOTE you may choose to separate your projects from your experiences,
+%% however you probably will end up with visually sparse sections
+%% --- looking like you don't have a lot of experiences
+%% (which you actually don't).
+%% so best just keep them together (or even merge them!)
+\input{src/exp.tex}
+
+%% NOTE if you really dont have enough content, uncomment this
+%%\input{src/courseworks.tex}
+
+\input{src/skills.tex}
+
+\end{document}

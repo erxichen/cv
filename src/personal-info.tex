@@ -1,0 +1,35 @@
+\usepackage{phonenumbers}
+\setphonenumbers{country=US,area-code-sep=brackets}
+
+% \title{}
+\def\lastname{\bilingual{Chen}{陈}}
+\def\firstname{\bilingual{Lijun}{李君}}
+\ifeng
+    \name{%
+        \color{gray}\texorpdfstring{\sffamily\MakeLowercase\firstname%
+        %\hspace{-.7ex}%
+        }{\firstname}%
+        }{%
+        \color{black}\texorpdfstring{\sffamily\textbf{\MakeLowercase\lastname}}{\lastname}%
+    }
+\else
+    \name{%
+        \texorpdfstring{\MakeLowercase\lastname\hspace{-.7ex}}{\lastname}%
+        }{%
+        \texorpdfstring{\MakeLowercase\firstname}{\firstname}%
+    }
+\fi
+
+% fixed, fax, ...
+\bilingual
+    {\phone[mobile]{\phonenumber{+15084918612}}}
+    {\phone[mobile]{13850188468}}
+\bilingual
+    {\email{lijunchen.acct@gmail.com}}
+    {\email{530403379@qq.com}}
+\extrainfo{%
+    \faLinkedinSquare\ \httplink{linkedin.com/in/lijun-chen}
+    \infodilimiter
+    % \faMapMarker\ \bilingual{Dartmouth, MA}
+    %                         {福建福州仓山区闽江大道99号天俊蓝水湾}
+}

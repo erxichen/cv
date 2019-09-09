@@ -1,0 +1,83 @@
+\usepackage{xcolor}
+
+%% NOTE choose ONE theme
+\moderncvstyle{classic}
+% \moderncvstyle{fancy}
+% \moderncvstyle{casual}
+% \moderncvstyle{banking}\AtBeginDocument{\setlength\hintscolumnwidth{0pt}}
+% \moderncvstyle{oldstyle}
+
+% blue, orange, red, green, purple, grey, black
+\moderncvcolor{grey}
+
+\nopagenumbers{}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\sectionfont}{\normalfont\Large\mdseries\scshape}
+\urlstyle{sf}
+
+\definecolor{darkgray}{RGB}{70,70,70}
+\AtBeginDocument{\color{darkgray}}
+
+%% list style
+%%---------------------------------------------------------------------------
+% make lists compact
+\setlist{nosep}
+
+% comma-separated list
+\bilingual{%
+    \def\commalistsep{,\ }
+    \def\commalistlastsep{,\ and\ }
+}{%
+    \def\commalistsep{、}
+    \def\commalistlastsep{和}
+}
+
+\newlist{commalist}{itemize*}{1}
+\setlist[commalist]{itemjoin={{\commalistsep}},
+                    itemjoin*={{\commalistlastsep}},
+                    label={},afterlabel={}}
+\newlist{commalist*}{itemize*}{1}
+\setlist[commalist*]{itemjoin={{\commalistsep}},label={},afterlabel={}}
+
+%% hint column width
+%%---------------------------------------------------------------------------
+% NOTE play with this! And comment out to restore default
+\setlength\hintscolumnwidth{0.8in}
+
+\let\oldcventry\cventry
+\def\cventry#1{\oldcventry{\small{}#1 \phantom{--}}}
+
+%% adjust the page margins
+%%---------------------------------------------------------------------------
+\usepackage[left=.5in,right=.7in,top=.3in,bottom=.5in]{geometry}
+\recomputelengths
+% \setlength{\makecvtitlenamewidth}{10cm}
+
+\def\infodilimiter{%
+    \ifdefined\makeheaddetailssymbol%
+        \makeheaddetailssymbol%
+    \else%
+        \\%
+    \fi%
+}
+
+% skip between title and content
+\ifeng
+    \def\titleskip{-2.6\baselineskip}
+\else
+    \def\titleskip{-1.5\baselineskip}
+\fi
+
+%% emphasis
+%%---------------------------------------------------------------------------
+% NOTE you can change the emphasis style here,
+% default is `\itshape` (italian)
+\def\emshape{\bfseries}
+\makeatletter
+\DeclareRobustCommand{\em}{%
+    \@nomath\em \if b\expandafter\@car\f@series\@nil \normalfont
+    \else \emshape \fi
+}
+\makeatother
+\DeclareTextFontCommand{\emph}{\em}
