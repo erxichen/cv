@@ -48,8 +48,15 @@
 
 \def\cvproj#1#2#3{\cvitemwithcomment{#1}{[#2]}{\raggedright\upshape{}#3}}
 \def\link#1{\par{\textbf{\faLink~\httplink{#1}}}}
-\newcommand*{\entryshortmonth}[2]{\bilingual{\shortmonthname[#2]~#1}
-                                            {#1/#2}}
+
+% datetime formats
+\makeatletter
+\newcommand*\shortyear[1]{\expandafter\@gobbletwo\number\numexpr#1\relax}
+\makeatother
+\newcommand*{\entryshortmonth}[2]{\bilingual{\shortmonthname[#2]~\shortyear{#1}}
+                                            {\shortyear{#1}/#2}}
+\newcommand*{\yearrange}[2]{\shortyear{#1} -- \shortyear{#2}}
+
 \newcommand*\propername[1]{\textit{#1}}
 \newcommand*{\suggestRemove}[1]{\textcolor{red}{\sout{#1}}}
 \newcommand*{\suggestAdd}[1]{\textcolor{blue}{#1}}
