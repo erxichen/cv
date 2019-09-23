@@ -1,12 +1,19 @@
-\section{\bilingual
-    {Objective: \smaller[0.5]Strive to be a professionalism in Accounting \& Finance}
-    {理想职位：审计助理或相关岗位}}
+\def\mytitle{Objective: \smaller[0.5]Strive to be a professionalism in}
+\optional{\acct}{%
+  \section{\mytitle\ Accounting \& Finance}
+}
+\optional{\tax}{%
+  \section{\mytitle\ Tax \& Accounting}
+}
 %% --------------------------------------------------
 
 \cvline{}{%
     \bilingual{%
         Detail-focused and analytical Master in Accounting
-        extensively knowledgeable in the field of accounting and finance,
+        extensively knowledgeable in the field of
+        \optional{\acct}{accounting and finance}
+        \optional{\tax}{tax and accounting}
+        ,
         with full qualifications and willingness to be a key member of your team
         % with
         % materiality,
