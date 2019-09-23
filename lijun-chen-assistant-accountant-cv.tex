@@ -19,6 +19,12 @@
 \engtrue  % comment to switch to chinese
 \newcommand*\bilingual[2]{\ifeng#1\else#2\fi}
 
+%% switch between versions
+%% use \optional to create optional content
+%% ------------------------------
+\def\version{acct}
+% \def\version{tax}
+
 \usepackage{multicol}
 \usepackage[inline]{enumitem}
 \usepackage{datetime}
@@ -62,6 +68,25 @@
 \newcommand*{\suggestAdd}[1]{\textcolor{blue}{#1}}
 \newcommand*{\suggestSub}[2]{\suggestRemove{#1}\suggestAdd{#2}}
 \newcommand*{\missing}{\textcolor{red}{MISSING}}
+
+\newif\ifacct
+\newif\iftax
+\newcommand\acct{\accttrue}
+\newcommand\tax{\taxtrue}
+
+\newcommand{\optional}[2]{%
+  #1%
+  \newif\ifdisplay%
+  \def\testversion{acct}\ifx\version\testversion\ifacct\displaytrue\fi\fi%
+  \def\testversion{tax}\ifx\version\testversion\iftax\displaytrue\fi\fi%
+  \ifdisplay%
+    #2%
+  \fi%
+  \acctfalse%
+  \taxfalse%
+  \let\ifdisplay\undefined%
+  \ignorespaces%
+}
 
 %% set up personal information
 %% --------------------------------------------------
